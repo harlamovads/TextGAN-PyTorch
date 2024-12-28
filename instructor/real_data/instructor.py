@@ -246,7 +246,7 @@ class BasicInstructor:
 
     def comb_metrics(self, fmt_str=False):
         all_scores = [self.cal_metrics_with_label(label_i) for label_i in range(cfg.k_label)]
-        all_scores = np.array(all_scores).T.tolist()  # each row for each metric
+        all_scores = np.array(all_scores, dtype="object").T.tolist() # each row for each metric 
 
         if fmt_str:
             return ', '.join(['%s = %s' % (metric.get_name(), score)
